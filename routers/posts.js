@@ -6,6 +6,6 @@ const postsCtrl = require("../controllers/posts");
 
 router.get("/", postsCtrl.getPosts);
 
-router.post('/', postsCtrl.addPost)
+// router.post('/', postsCtrl.addPost)
 
 module.exports = router;
