@@ -1,19 +1,15 @@
 const express = require("express");
-const cors = require('cors') 
-const app = express();
+const cors = require("cors");
 
-const port = 8080;
+const app = express()
 
-app.use(express.json())
-app.use(cors())
+app.use(express.json());
+app.use(cors());
 
-const postsRouter = require('./routers/posts')
+const postsRouter = require("./routers/posts");
 
-app.use('/api/posts', postsRouter )
-
-
-app.listen(port, () => {
-  console.log(`Example app listining on port ${port}`);
-});
+app.use("/api/posts", postsRouter);
 
 // pdJ5TNoSHi61rxWA
+
+module.exports = app;
