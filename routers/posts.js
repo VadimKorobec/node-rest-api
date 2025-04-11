@@ -2,10 +2,10 @@ const express = require("express");
 
 const router = express.Router();
 
-const postsCtrl = require("../controllers/posts");
+const ctrl = require("../controllers/posts");
 
-router.get("/", postsCtrl.getPosts);
+router.get("/", ctrl.getAll);
 
-// router.post('/', postsCtrl.addPost)
+router.post("/", ctrl.addPost);
 
 module.exports = router;
