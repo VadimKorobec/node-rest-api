@@ -6,7 +6,7 @@ const postSchema = new Schema(
     content: { type: String, required: true },
     favorite: {
       type: Boolean,
-      dafault: false,
+      default:false,
     },
   },
   { versionKey: false, timestamps: true }
