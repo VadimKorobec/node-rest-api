@@ -19,13 +19,18 @@ postSchema.post("save", (error, data, next) => {
 });
 
 const addSchema = Joi.object({
-  title: Joi.string().replace(),
+  title: Joi.string().required(),
   content: Joi.string().required(),
   favorite: Joi.boolean(),
 });
 
+const updateFavoriteSchema = Joi.object({
+ favorite: Joi.boolean().required()
+})
+
 const schemas = {
   addSchema,
+  updateFavoriteSchema,
 }
 
 const Post = model("post", postSchema);
