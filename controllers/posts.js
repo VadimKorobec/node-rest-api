@@ -66,7 +66,7 @@ exports.deleteById = async (req, res, next) => {
     if (!result) {
       throw HttpError(404, "Not found");
     }
-    res.status(200).json({message:'Deleted successfully'});
+    res.status(200).json({ message: "Deleted successfully" });
   } catch (error) {
     next(error);
   }

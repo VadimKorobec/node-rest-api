@@ -7,8 +7,10 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+const authRouter = require('./routers/auth')
 const postsRouter = require("./routers/posts");
 
+app.use('/api/auth', authRouter)
 app.use("/api/posts", postsRouter);
 
 app.use((req, res) => {
