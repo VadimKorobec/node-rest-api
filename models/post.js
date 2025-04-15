@@ -3,8 +3,14 @@ const Joi = require("joi");
 
 const postSchema = new Schema(
   {
-    title: { type: String, required: true },
-    content: { type: String, required: true },
+    title: {
+      type: String,
+      required: true,
+    },
+    content: {
+      type: String,
+      required: true,
+    },
     favorite: {
       type: Boolean,
       default: false,
@@ -25,13 +31,13 @@ const addSchema = Joi.object({
 });
 
 const updateFavoriteSchema = Joi.object({
- favorite: Joi.boolean().required()
-})
+  favorite: Joi.boolean().required(),
+});
 
 const schemas = {
   addSchema,
   updateFavoriteSchema,
-}
+};
 
 const Post = model("post", postSchema);
 
