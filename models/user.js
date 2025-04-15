@@ -12,6 +12,7 @@ const userSchema = new Schema(
     email: {
       type: String,
       match: emailRegexp,
+      unique: true,
       required: true,
     },
     password: {
@@ -24,7 +25,9 @@ const userSchema = new Schema(
 );
 
 userSchema.post("save", (error, data, next) => {
-  error.status = 400;
+  const { name, code } = error;
+  const status = name === "MongoServerError" && code === 11000 ? 409 : 400;
+  error.status = status;
   next();
 });
 
