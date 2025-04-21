@@ -4,7 +4,8 @@ const HttpError = require("../helpers/HttpError");
 
 exports.getAll = async (req, res, next) => {
   try {
-    const posts = await Post.find({}, "-updatedAt");
+    const { _id: owner } = req.user;
+    const posts = await Post.find({ owner }, "-updatedAt");
     res.status(200).json(posts);
   } catch (error) {
     next(error);
@@ -26,7 +27,8 @@ exports.getById = async (req, res, next) => {
 
 exports.addPost = async (req, res, next) => {
   try {
-    const result = await Post.create(req.body);
+    const { _id: owner } = req.user;
+    const result = await Post.create({ ...req.body, owner });
     res.status(201).json(result);
   } catch (error) {
     next(error);
