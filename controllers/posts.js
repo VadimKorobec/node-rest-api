@@ -5,7 +5,7 @@ const HttpError = require("../helpers/HttpError");
 exports.getAll = async (req, res, next) => {
   try {
     const { _id: owner } = req.user;
-    const posts = await Post.find({ owner }, "-updatedAt");
+    const posts = await Post.find({ owner }, "-updatedAt").populate("owner","name email");
     res.status(200).json(posts);
   } catch (error) {
     next(error);
